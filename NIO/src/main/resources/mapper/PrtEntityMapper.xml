@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="myBatis.mapper.PrtEntityMapper" >
+    <resultMap id="BaseResultMap" type="myBatis.model.PrtEntity" >
+        <id column="ID" property="id" jdbcType="VARCHAR" />
+        <result column="CREATE_DATE" property="createDate" jdbcType="TIMESTAMP" />
+        <result column="SALE_DATE" property="saleDate" jdbcType="TIMESTAMP" />
+        <result column="PRT_CODE" property="prtCode" jdbcType="VARCHAR" />
+        <result column="PRT_TITLE" property="prtTitle" jdbcType="VARCHAR" />
+        <result column="PRT_SUBTITLE" property="prtSubtitle" jdbcType="VARCHAR" />
+        <result column="PRT_PRICE" property="prtPrice" jdbcType="DECIMAL" />
+        <result column="SALE_COUNT" property="saleCount" jdbcType="DECIMAL" />
+        <result column="PRT_ATTENTION" property="prtAttention" jdbcType="DECIMAL" />
+        <result column="PRT_KEYWORDS" property="prtKeywords" jdbcType="VARCHAR" />
+        <result column="CATGORY_ID" property="catgoryId" jdbcType="VARCHAR" />
+        <result column="BRAND_ID" property="brandId" jdbcType="VARCHAR" />
+        <result column="SHOP_ID" property="shopId" jdbcType="DECIMAL" />
+        <result column="IS_USE" property="isUse" jdbcType="CHAR" />
+        <result column="IS_SALE" property="isSale" jdbcType="CHAR" />
+        <result column="IS_DELETE" property="isDelete" jdbcType="CHAR" />
+        <result column="FRT_BOARD_ID" property="frtBoardId" jdbcType="DECIMAL" />
+        <result column="FPATH1" property="fpath1" jdbcType="VARCHAR" />
+        <result column="FPATH2" property="fpath2" jdbcType="VARCHAR" />
+        <result column="FPATH3" property="fpath3" jdbcType="VARCHAR" />
+        <result column="FPATH4" property="fpath4" jdbcType="VARCHAR" />
+        <result column="FPATH5" property="fpath5" jdbcType="VARCHAR" />
+        <result column="FPATH6" property="fpath6" jdbcType="VARCHAR" />
+        <result column="FPATH7" property="fpath7" jdbcType="VARCHAR" />
+        <result column="FPATH8" property="fpath8" jdbcType="VARCHAR" />
+        <result column="IS_SHOW_PHONE" property="isShowPhone" jdbcType="CHAR" />
+        <result column="IS_SHOW_PAD" property="isShowPad" jdbcType="CHAR" />
+        <result column="IS_INVOICE" property="isInvoice" jdbcType="CHAR" />
+        <result column="LOGISTICS_TYPE" property="logisticsType" jdbcType="VARCHAR" />
+        <result column="FREIGHT_TYPE" property="freightType" jdbcType="CHAR" />
+        <result column="EMS_FREIGHT_PRICE" property="emsFreightPrice" jdbcType="DECIMAL" />
+        <result column="SURFACE_FREIGHT_PRICE" property="surfaceFreightPrice" jdbcType="DECIMAL" />
+        <result column="EXPRESS_FREIGHT_PRICE" property="expressFreightPrice" jdbcType="DECIMAL" />
+        <result column="WEIGHT" property="weight" jdbcType="DECIMAL" />
+        <result column="PRICE_TYPE" property="priceType" jdbcType="VARCHAR" />
+        <result column="IS_ENGINEER_COMMENT" property="isEngineerComment" jdbcType="CHAR" />
+        <result column="COMMISSION_MODE" property="commissionMode" jdbcType="VARCHAR" />
+        <result column="SALES_VOL" property="salesVol" jdbcType="DECIMAL" />
+        <result column="STORE_ADDR_ID" property="storeAddrId" jdbcType="VARCHAR" />
+        <result column="MODIFY_DATE" property="modifyDate" jdbcType="TIMESTAMP" />
+        <result column="IS_RECOMMEND" property="isRecommend" jdbcType="CHAR" />
+        <result column="DENSITY" property="density" jdbcType="DECIMAL" />
+        <result column="IS_ACTIVITY_PRICE" property="isActivityPrice" jdbcType="CHAR" />
+        <result column="OLD_PRICE" property="oldPrice" jdbcType="DECIMAL" />
+        <result column="ACT_TYPE" property="actType" jdbcType="VARCHAR" />
+        <result column="ACT_ID" property="actId" jdbcType="VARCHAR" />
+    </resultMap>
+    <select id="listByPrtName" resultMap="BaseResultMap" parameterType="string">
+        SELECT *
+        FROM T_PRT_ENTITY
+        WHERE PRT_TITLE LIKE CONCAT('%',#{name},'%')
+    </select>
+</mapper>
