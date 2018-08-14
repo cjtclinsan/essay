@@ -16,6 +16,16 @@
 *.iml
 *.ipr
 
+/.settings
+/target
+/test-output
+/.classpath
+/.project
+*.iml
+/lib
+*.log
+/.idea
+
 ### NetBeans ###
 /nbproject/private/
 /build/
