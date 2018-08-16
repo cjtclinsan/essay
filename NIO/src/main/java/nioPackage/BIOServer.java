@@ -13,9 +13,11 @@ import java.util.concurrent.*;
 public class BIOServer {
     public void server1(){
         try {
-            Socket socket = new Socket("localhost", 20006);
-            OutputStream out = socket.getOutputStream();
+            ServerSocket serverSocket = new ServerSocket( 20006);
+            System.out.println("服务器启动成功，监听端口等待客户端链接。。。");
+            Socket socket = serverSocket.accept();
 
+            OutputStream out = socket.getOutputStream();
             out.write("hello client, i am server".getBytes());
             out.flush();
 
@@ -43,7 +45,21 @@ public class BIOServer {
                 new Thread(new Runnable() {
                     @Override
                     public void run() {
-                        System.out.println("创建新线程");
+                        try {
+                            OutputStream out = socket.getOutputStream();
+                            out.write("接收到服务端信息".getBytes());
+                            out.flush();
+
+                            InputStream in = socket.getInputStream();
+                            byte[] buffer = new byte[1024];
+                            int len = 0;
+                            if( (len = in.read(buffer)) > 0 ){
+                                System.out.println(new String(buffer, 0 ,len));
+                            }
+                            System.out.println();
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 }).start();
             }
@@ -76,6 +92,6 @@ public class BIOServer {
 
     public static void main(String[] args) {
         BIOServer server = new BIOServer();
-        server.server3();
+        server.server2();
     }
 }

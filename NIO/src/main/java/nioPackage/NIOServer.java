@@ -16,7 +16,7 @@ import java.util.Set;
  */
 public class NIOServer {
 
-    private int port = 8000;
+    private int port = 20006;
     private InetSocketAddress address = null;
     private Selector selector;
 
@@ -78,7 +78,6 @@ public class NIOServer {
             if( len > 0 ){
                 buffer.flip();    //把limit设置为当前的position值,把position设置为0,mark=-1
                 String content = new String(buffer.array(),0,len);
-                System.out.println(content);
                 client.register(selector,SelectionKey.OP_WRITE);
             }
             buffer.clear();
@@ -90,6 +89,6 @@ public class NIOServer {
     }
 
     public static void main(String[] args) {
-        new NIOServer(8000).Listen();
+        new NIOServer(20006).Listen();
     }
 }
