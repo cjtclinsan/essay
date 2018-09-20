@@ -29,8 +29,7 @@ public class DynamicProxy implements InvocationHandler {
 
     public static void main(String[] args) {
         TestInterface object = (TestInterface) Proxy.newProxyInstance(ClassLoader.getSystemClassLoader(),
-                        new Class[]{TestInterface.class},
-                new DynamicProxy(new TestClass()));
+                        new Class[]{TestInterface.class}, new DynamicProxy(new TestClass()));
 
         object.method1();
         object.method2();
